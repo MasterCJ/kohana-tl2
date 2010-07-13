@@ -1,0 +1,4 @@
+1. `git submodule add git://github.com/MasterCJ/kohana-tl2.git modules/tl2`
+2. Enable 'tl2' in your bootstrap file
+3. Set the location for your language files, configure the cache if necessary
+4. Use the TL2::* functions in your project

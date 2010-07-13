@@ -1,0 +1,54 @@
+TL2
+===
+
+Overview
+--------
+
+The default i18n features in Kohana are adequate for most applications, but I
+found I needed more control over how things were translated. This module
+contains an improved plural system and multiple cascading language support.
+
+Language files are stored as JSON and can be cached in whole and in part by
+way of the cache module.
+
+Installation
+------------
+
+1. `git submodule add git://github.com/MasterCJ/kohana-tl2.git modules/tl2`
+2. Enable 'tl2' in your bootstrap file
+3. Set the location for your language files, configure the cache if necessary
+4. Use the TL2::* functions in your project
+
+Usage
+-----
+
+	$str = TL2::tr('example', array('var1' => 'one thing', 'var2' => 'another'));
+	$str -> "this is an example of 'one thing' and 'another'"
+
+	$str = TL2::tr('example', array('var1' => 'one thing', 'var2' => 'another'), 'ja_jp');
+	$str -> "これは'one thing'と'another'の例です"
+
+	$str = TL2::tn('time:measurement:second', -20);
+	$str -> "-20 seconds"
+
+	$str = TL2::tn('time:measurement:second', -1);
+	$str -> "-1 second"
+
+	$str = TL2::tn('time:measurement:second', 0, 'ja_jp,en_us');
+	$str -> "0秒"
+
+	$str = TL2::tn('time:measurement:second', 1, 'ja_jp,en_us');
+	$str -> "1秒"
+
+	$str = TL2::tn('time:measurement:second', 2, 'en_us,ja_jp');
+	$str -> "2 seconds"
+
+	$str = TL2::tn('time:measurement:second', 2, 'ja_jp,en_us');
+	$str -> "2秒"
+
+u mad?
+------
+
+This is really a single-purpose module, so I won't be doing a whole lot of
+updates I don't think. If you find something broken though, let me know. You
+can reach me at github or mastercj@mastercj.net.
